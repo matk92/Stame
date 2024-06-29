@@ -72,7 +72,15 @@ Compilez les assets de l'application :
 ./vendor/bin/sail npm run dev
 ```
 
-### Étape 8 : Peupler la base de données
+### Étape 8 : Exécuter les migrations
+
+Exécutez les migrations de la base de données :
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+### Étape 9 : Peupler la base de données
 
 Peuplez la base de données avec des données initiales :
 
@@ -80,7 +88,7 @@ Peuplez la base de données avec des données initiales :
 ./vendor/bin/sail artisan db:seed --class=GamesTableSeeder
 ```
 
-### Étape 9 : Créer un lien symbolique pour le stockage
+### Étape 10 : Créer un lien symbolique pour le stockage
 
 Créez un lien symbolique de `public/storage` vers `storage/app/public` :
 
