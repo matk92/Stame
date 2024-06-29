@@ -83,5 +83,16 @@ class GameController extends Controller
             return back()->withInput()->with('error', 'Erreur lors de la mise à jour du jeu.');
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $game = Game::findOrFail($id);
+            $game->delete();
+            return redirect()->route('games.index')->with('success', 'Jeu supprimé avec succès.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erreur lors de la suppression du jeu.');
+        }
+    }
     
 }

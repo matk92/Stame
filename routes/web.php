@@ -23,5 +23,6 @@ Route::get('/games/add', [GameController::class, 'create'])->name('games.create'
 Route::post('/games', [GameController::class, 'store'])->name('games.store');
 Route::get('/games/{game}/edit', [GameController::class, 'edit'])->name('games.edit');
 Route::put('/games/{game}', [GameController::class, 'update'])->name('games.update');
+Route::delete('/games/{id}', [GameController::class, 'destroy'])->name('games.destroy');
 
 require __DIR__.'/auth.php';

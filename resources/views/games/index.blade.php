@@ -16,7 +16,7 @@
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-xl font-semibold text-gray-700">Liste des jeux</h1>
-            <a href="{{ route('games.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('games.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150">
                 + Ajouter un jeu
             </a>
         </div>
@@ -38,7 +38,7 @@
                 <div class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full" id="modal{{ $game->id }}">
                     <div class="modal-container max-w-3xl mx-auto mt-10 mb-10 bg-white rounded shadow-lg z-50 overflow-y-auto">
                         <!-- Modal Header -->
-                        <div class="modal-header flex justify-between items-center bg-blue-500 text-white p-4 rounded-t">
+                        <div class="modal-header flex justify-between items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-t shadow-lg">
                             <h2 class="text-xl">{{ $game->title }}</h2>
                             <button class="modal-close" data-modal-close="#modal{{ $game->id }}">
                                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/></svg>
@@ -54,9 +54,18 @@
                             <p class="text-gray-700 mb-2"><strong>Classification PEGI :</strong> {{ $game->pegi }}</p>
                             <p class="text-gray-700 mb-2"><strong>Score :</strong> {{ $game->score }}</p>
                             <p class="text-gray-700"><strong>Commentaire :</strong> {{ $game->comment }}</p><br>
-                            <a href="{{ route('games.edit', $game->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Éditer
-                            </a>
+                            <div class="flex justify-between items-center">
+                                <a href="{{ route('games.edit', $game->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150">
+                                    Éditer
+                                </a>
+                                <form action="{{ route('games.destroy', $game->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150 focus:outline-none focus:shadow-outline" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?');">
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
