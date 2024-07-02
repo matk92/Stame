@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
+<x-app-layout>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Jeux</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-</head>
-
-<body class="bg-gray-100">
-    <div class="fixed top-0 left-0 p-4">
-        <a href="/dashboard" class="flex items-center bg-white px-6 hover:underline py-2 rounded-full shadow text-gray-700 hover:text-gray-900">
-            <i class="fas fa-arrow-left mr-2"></i> Retour à l'accueil
-        </a>
-    </div>
     <div class="container mx-auto px-4 py-8 mt-10">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-semibold text-gray-700">Liste des jeux</h1>
+            @can('update articles')
             <a href="{{ route('games.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150">
                 + Ajouter un jeu
             </a>
+            @endcan
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($games as $game)
@@ -62,6 +49,7 @@
                             <a href="{{ route('games.edit', $game->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150">
                                 Éditer
                             </a>
+                            @can('delete articles')
                             <form action="{{ route('games.destroy', $game->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -69,6 +57,7 @@
                                     Supprimer
                                 </button>
                             </form>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -108,6 +97,4 @@
             });
         });
     </script>
-</body>
-
-</html>
+</x-app-layout>

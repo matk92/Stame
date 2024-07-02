@@ -57,9 +57,9 @@
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="score">
-                        Score
+                        Score (<span id="scoreValue" class="text-gray-700">50</span>)
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="score" name="score" type="text" placeholder="Score du jeu" value="{{ old('score') }}" required>
+                    <input class="!border-cyan-200 border-2 h-1 appearance-none rounded w-2/5  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="score" name="score" type="range" placeholder="Score du jeu" value="{{ old('score') }}" required min="0" max="100" oninput="document.getElementById('scoreValue').textContent = this.value">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">

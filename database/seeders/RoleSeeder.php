@@ -20,9 +20,9 @@ class RoleSeeder extends Seeder
 
         // create permissions
         Permission::create(['name' => 'comment articles']);
-        Permission::create(['name' => 'edit articles']);
-        Permission::create(['name' => 'create articles']);
+        Permission::create(['name' => 'update articles']);
         Permission::create(['name' => 'delete articles']);
+        Permission::create(['name' => 'manage users']);
 
         // create roles and assign created permissions
 
@@ -32,7 +32,7 @@ class RoleSeeder extends Seeder
 
         // or may be done by chaining
         Role::create(['name' => 'moderator'])
-            ->syncPermissions(['comment articles', 'create articles', 'edit articles']);
+            ->syncPermissions(['comment articles', 'update articles']);
 
         Role::create(['name' => 'admin'])
             ->syncPermissions(Permission::all());
