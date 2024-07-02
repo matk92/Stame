@@ -94,5 +94,33 @@ class GameController extends Controller
             return back()->with('error', 'Erreur lors de la suppression du jeu.');
         }
     }
-    
+
+    use Illuminate\Http\Request;
+
+class GameApiController extends Controller
+{
+    public function indexAll()
+    {
+        $games = Game::all();
+        return response()->json($games);
+    }
+
+    public function show($id)
+    {
+        $game = Game::find($id);
+        if (!$game) {
+            return response()->json(['message' => 'Jeu non trouvé'], 404);
+        }
+        return response()->json($game);
+    }
+
+    public function category($category)
+    {
+        $games = Game::where('genre', $category)->get();
+        if ($games->isEmpty()) {
+            return response()->json(['message' => 'Aucun jeu trouvé pour cette catégorie'], 404);
+        }
+        return response()->json($games);
+    }
+}
 }
