@@ -32,6 +32,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user): RedirectResponse
     {
+        $request->validate([
+            'role' => 'required|string|exists:roles,name'
+        ]);
         $user->syncRoles($request->role);
 
         return Redirect::route('users.index');

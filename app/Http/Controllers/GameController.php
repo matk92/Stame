@@ -22,14 +22,14 @@ class GameController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'title' => 'required',
+                'title' => 'required|unique:games',
                 'release_date' => 'required|date',
-                'genre' => 'required',
-                'summary' => 'required',
-                'producer' => 'required',
+                'genre' => 'required|string',
+                'summary' => 'required|string',
+                'producer' => 'required|string',
                 'pegi' => 'required|integer',
-                'score' => 'required|numeric',
-                'comment' => 'required',
+                'score' => 'required|numeric|between:0,100',
+                'comment' => 'required|string',
                 'cover_image' => 'required|image',
             ]);
         
