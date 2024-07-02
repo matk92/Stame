@@ -95,10 +95,6 @@ class GameController extends Controller
         }
     }
 
-    use Illuminate\Http\Request;
-
-class GameApiController extends Controller
-{
     public function indexAll()
     {
         $games = Game::all();
@@ -122,5 +118,4 @@ class GameApiController extends Controller
         }
         return response()->json($games);
     }
-}
 }
