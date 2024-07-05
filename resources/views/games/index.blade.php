@@ -2,7 +2,7 @@
 
     <div class="container mx-auto px-4 py-8 mt-10">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-semibold text-gray-700">Liste des jeux</h1>
+            <h1 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Liste des jeux</h1>
             @can('update articles')
             <a href="{{ route('games.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition ease-in-out duration-150">
                 + Ajouter un jeu
@@ -11,16 +11,16 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($games as $game)
-            <div class="bg-white shadow-md rounded-lg overflow-hidden cursor-pointer" data-modal-target="#modal{{ $game->id }}">
+            <div class="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden" data-modal-target="#modal{{ $game->id }}">
                 <img src="{{ asset('storage/games/' . $game->cover_image) }}" alt="Image de {{ $game->title }}" class="w-full h-64 object-cover">
                 <div class="p-4">
-                    <h2 class="font-bold text-lg mb-2">{{ $game->title }}</h2>
-                    <p class="text-gray-700 text-base mb-4">
+                    <h2 class="font-bold text-lg mb-2 dark:text-gray-200">{{ $game->title }}</h2>
+                    <p class="text-gray-700 dark:text-gray-200 text-base mb-4">
                         {{ Str::limit($game->summary, 100) }}
                     </p>
                     <div class="flex justify-between items-center">
                         <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ $game->genre }}</span>
-                        <span class="text-sm text-gray-600">{{ $game->release_date }}</span>
+                        <span class="text-sm text-gray-600 dark:text-gray-100">{{ $game->release_date }}</span>
                     </div>
                 </div>
             </div>

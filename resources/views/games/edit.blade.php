@@ -55,13 +55,20 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="pegi">
                         PEGI
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pegi" name="pegi" type="number" placeholder="Classification PEGI" value="{{ old('pegi', $game->pegi) }}" required>
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pegi" name="pegi" required>
+                        <option value="">Sélectionnez la classification PEGI</option>
+                        <option value="3" {{ old('pegi', $game->pegi) == '3' ? 'selected' : '' }}>PEGI 3</option>
+                        <option value="7" {{ old('pegi', $game->pegi) == '7' ? 'selected' : '' }}>PEGI 7</option>
+                        <option value="12" {{ old('pegi', $game->pegi) == '12' ? 'selected' : '' }}>PEGI 12</option>
+                        <option value="16" {{ old('pegi', $game->pegi) == '16' ? 'selected' : '' }}>PEGI 16</option>
+                        <option value="18" {{ old('pegi', $game->pegi) == '18' ? 'selected' : '' }}>PEGI 18</option>
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="score">
-                        Score
+                        Score (<span id="scoreValue" class="text-gray-700">50</span>)
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="score" name="score" type="text" placeholder="Score du jeu" value="{{ old('score', $game->score) }}" required>
+                    <input class="!border-cyan-200 border-2 h-1 appearance-none rounded w-2/5  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="score" name="score" type="range" placeholder="Score du jeu" value="{{ old('score') }}" required min="0" max="100" oninput="document.getElementById('scoreValue').textContent = this.value">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
