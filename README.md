@@ -85,7 +85,7 @@ Exécutez les migrations de la base de données :
 Peuplez la base de données avec des données initiales :
 
 ```bash
-./vendor/bin/sail artisan db:seed --class=GamesTableSeeder
+./vendor/bin/sail artisan db:seed
 ```
 
 ### Étape 10 : Créer un lien symbolique pour le stockage
