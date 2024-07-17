@@ -30,6 +30,8 @@ Utilisez Docker pour installer les dépendances Composer sans nécessiter Compos
 docker run --rm     -u "$(id -u):$(id -g)"     -v "$(pwd):/var/www/html"     -w /var/www/html     laravelsail/php83-composer:latest     composer install --ignore-platform-reqs
 ```
 
+Si problème à cette étape créer manuellement les dossier vendor>laravel>sail
+
 ### Étape 3 : Configurer le fichier d'environnement
 
 Copiez le fichier d'environnement exemple et configurez-le :
